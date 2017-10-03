@@ -15,15 +15,16 @@ Each button is defined in isolation in terms of:
 * a `update function` executed in loop verifying with the debounce and the state of button changed.
 * a `state function` return the last state of button changed.
 * a `setCallback function` set the callback function that will execute when the state of button changed.
+* a `clear function` clear variables of state of button.
 
 Example:
 
 ```
-void buttonClick(int state) {
+void buttonChanged(int state) {
   // do something
 }
-ButtonDebounce button(3, 100); // PIN 3 and debounce 100ms
-button.setCallback(buttonClick);
+ButtonDebounce button(3, 250); // PIN 3 and debounce 100ms
+button.setCallback(buttonChanged);
 ```
 
 ## 2. Periodic verification
