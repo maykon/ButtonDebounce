@@ -13,12 +13,12 @@ Button	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-update  KEYWORD2
-state   KEYWORD2
-setCallback KEYWORD2
+update	KEYWORD2
+state	KEYWORD2
+setCallback	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
 #######################################
 
-BTN_CALLBACK    LITERAL1
+BTN_CALLBACK	LITERAL1
