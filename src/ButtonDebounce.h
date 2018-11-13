@@ -15,6 +15,7 @@ class ButtonDebounce{
     int _pin;
     unsigned long _delay;
     unsigned long _lastDebounceTime;
+    unsigned long _lastChangeTime;
     int _lastStateBtn;
     BTN_CALLBACK;
     bool isTimeToUpdate();
