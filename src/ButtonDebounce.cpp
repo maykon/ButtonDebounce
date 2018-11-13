@@ -6,19 +6,30 @@ ButtonDebounce::ButtonDebounce(int pin, unsigned long delay){
   _pin = pin;
   _delay = delay;
   _lastDebounceTime = 0;
+  _lastChangeTime = 0;
   _lastStateBtn = HIGH;
 }
 
 bool ButtonDebounce::isTimeToUpdate(){
-  return (millis() - _lastDebounceTime) > _delay;
+  return (millis() - _lastDebounceTime) > _delay / 8;
 }
 
 void ButtonDebounce::update(){
   if(!isTimeToUpdate()) return;
   _lastDebounceTime = millis();
   int btnState = digitalRead(_pin);
-  if(btnState == _lastStateBtn) return;
+  if(btnState == _lastStateBtn) {
+        _lastChangeTime = millis();
+	return;
+  };
+  if (millis() - _lastChangeTime < _delay)
+   	return;
+
+  // now at leat least 8 sample points in _delay time changed.
+  // so that counts.
+
   _lastStateBtn = btnState;
+
   if(this->callback) this->callback(_lastStateBtn);
 }
 
