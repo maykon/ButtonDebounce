@@ -4,14 +4,14 @@
 
 ButtonDebounce button(GPIO_PIN);
 
-void buttonChanged(int state){
-  Serial.println("Changed: " + String(state));
-}
 
 void setup() {
   Serial.begin(115200);
-  button.setCallback(buttonChanged);
+  button.setCallback([](int newState) {
+	Serial.printf("New button state %d\n", newState);
+     });
 }
 
 void loop() {
+  button.update();
 }

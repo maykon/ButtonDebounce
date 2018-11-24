@@ -7,23 +7,25 @@
 #define ButtonDebounce_h
 
 #include "Arduino.h"
+#include "Ticker.h"
+#include <functional>
 
-#define BTN_CALLBACK void (*callback)(int)
 
 class ButtonDebounce{
+  public:
+    ButtonDebounce(int pin, unsigned long delay = 250);
+    Ticker _ticker;
+    int state();
+    typedef std::function<void(int)> btn_callback_t;
+    void setCallback(btn_callback_t callback);
+    void update();
   private:
     int _pin;
     unsigned long _delay;
     unsigned long _lastDebounceTime;
     unsigned long _lastChangeTime;
     int _lastStateBtn;
-    BTN_CALLBACK;
-    bool isTimeToUpdate();
-  public:
-    ButtonDebounce(int pin, unsigned long delay);
-    void update();
-    int state();
-    void setCallback(BTN_CALLBACK);
+    btn_callback_t _callback;
 };
 
 #endif
