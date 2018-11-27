@@ -8,7 +8,7 @@
 
 #include "Arduino.h"
 
-#define BTN_CALLBACK void (*callback)(int)
+typedef std::function<void(const int)> ButtonCallback;
 
 class ButtonDebounce{
   private:
@@ -17,13 +17,13 @@ class ButtonDebounce{
     unsigned long _lastDebounceTime;
     unsigned long _lastChangeTime;
     int _lastStateBtn;
-    BTN_CALLBACK;
+    ButtonCallback _callBack = NULL;
     bool isTimeToUpdate();
   public:
     ButtonDebounce(int pin, unsigned long delay);
     void update();
     int state();
-    void setCallback(BTN_CALLBACK);
+    void setCallback(ButtonCallback);
 };
 
 #endif
