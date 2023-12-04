@@ -10,7 +10,6 @@
 #include "Ticker.h"
 #include <functional>
 
-
 class ButtonDebounce{
   public:
     ButtonDebounce(int pin, unsigned long delay = 250);
@@ -25,7 +24,13 @@ class ButtonDebounce{
     unsigned long _lastDebounceTime;
     unsigned long _lastChangeTime;
     int _lastStateBtn;
-    btn_callback_t _callback;
+    ButtonCallback _callBack = NULL;
+    bool isTimeToUpdate();
+  public:
+    ButtonDebounce(int pin, unsigned long delay);
+    void update();
+    int state();
+    void setCallback(ButtonCallback);
 };
 
 #endif

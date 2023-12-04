@@ -32,14 +32,13 @@ void ButtonDebounce::update(){
    	return;
 
   _lastStateBtn = btnState;
-  if (_callback) 
-	_callback(_lastStateBtn);
+  if(this->_callBack) this->_callBack(_lastStateBtn);
 }
 
 int ButtonDebounce::state(){
   return _lastStateBtn;
 }
 
-void ButtonDebounce::setCallback(btn_callback_t callback){
-  _callback = callback;
+void ButtonDebounce::setCallback(ButtonCallback callback) { 
+  this->_callBack = callback;
 }

@@ -2,9 +2,9 @@
 
 #define GPIO_PIN (10)
 
-ButtonDebounce button(GPIO_PIN);
+ButtonDebounce button(GPIO_PIN, 250 /* millisSeconds */);
 
-void buttonChanged(int state){
+void buttonChanged(const int state){
   Serial.println("Changed: " + String(state));
 }
 

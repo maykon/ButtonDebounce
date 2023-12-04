@@ -15,7 +15,7 @@ Declare a `ButtonDebouce` object with `pinNumber` and `timeMillis` to debounce a
 Example:
 
 ```
-void onButtonChange(int state) {
+void onButtonChange(const int state) {
   Serial.println("Changed: " + String(state));
 }
 ButtonDebounce button(3, 250); // PIN 3 with 250ms debounce time
@@ -25,11 +25,11 @@ button.setCallback(onButtonChange);
 Or - in a more asynchroneous style:
 
 ```
-void onButtonChange(int state) {
+void onButtonChange(const int state) {
   Serial.println("Changed: " + String(state));
 }
 ButtonDebounce button(3, 250); // PIN 3 with 250ms debounce time
-button.setCallback([](int state) {
+button.setCallback([](const int state) {
   Serial.println("Changed: " + String(state));
 });
 ```
@@ -54,3 +54,12 @@ void loop() {
   buttonDown.update();
 }
 ```
+
+## Contributors
+
+Thank you for all contributions:
+
+* [per1234](https://github.com/per1234)
+* [Italo Souza](https://github.com/italosouza)
+* [Dirk-Willem van Gulik](https://github.com/dirkx)
+* [abaskin](https://github.com/abaskin)

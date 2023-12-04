@@ -7,7 +7,7 @@ ButtonDebounce button(GPIO_PIN);
 
 void setup() {
   Serial.begin(115200);
-  button.setCallback([](int newState) {
+  button.setCallback([](const int newState) {
 	Serial.printf("New button state %d\n", newState);
      });
 }
